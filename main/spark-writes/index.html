@@ -19,7 +19,7 @@ Iceberg uses Apache Spark&rsquo;s DataSourceV2 API for data source and catalog i
 <link rel=icon href=/iceberg-docs-prototype/main/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/iceberg-docs-prototype/main/book.min.a0d6a3836a25edf3324f09f7e93515c58ff9c3a34dd1ca31394f49166b2c75c9.css integrity="sha256-oNajg2ol7fMyTwn36TUVxY/5w6NN0coxOU9JFmssdck=" crossorigin=anonymous>
 <script defer src=/iceberg-docs-prototype/main/flexsearch.min.js></script>
-<script defer src=/iceberg-docs-prototype/main/en.search.min.6c326d9e82cf863a4a73a5c0e7b1a8f4798d40b8bbacb4bbf66289b6e291e530.js integrity="sha256-bDJtnoLPhjpKc6XA57Go9HmNQLi7rLS79mKJtuKR5TA=" crossorigin=anonymous></script>
+<script defer src=/iceberg-docs-prototype/main/en.search.min.fbf2c549c36668c13285eaa12a03b290cd8d27c8c6fe3bb10c5f17914e50e68b.js integrity="sha256-+/LFScNmaMEyheqhKgOykM2NJ8jG/juxDF8XkU5Q5os=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -253,10 +253,6 @@ Project</span>
 How To Release</a>
 </li>
 <li class=navigation-icon-pad>
-<a href=https://samredai.github.io/iceberg-docs-prototype/main/releases/>
-Releases</a>
-</li>
-<li class=navigation-icon-pad>
 <a href=https://samredai.github.io/iceberg-docs-prototype/main/roadmap/>
 Roadmap</a>
 </li>
@@ -481,9 +477,10 @@ Writing with SQL
 </h3>
 <p><code>INSERT OVERWRITE</code> can replace data in the table with the result of a query. Overwrites are atomic operations for Iceberg tables.</p>
 <p>The partitions that will be replaced by <code>INSERT OVERWRITE</code> depends on Spark&rsquo;s partition overwrite mode and the partitioning of a table. <code>MERGE INTO</code> can rewrite only affected data files and has more easily understood behavior, so it is recommended instead of <code>INSERT OVERWRITE</code>.</p>
-<p>!!! Warning
-Spark 3.0.0 has a correctness bug that affects dynamic <code>INSERT OVERWRITE</code> with hidden partitioning, <a href=https://issues.apache.org/jira/browse/SPARK-32168>SPARK-32168</a>.
-For tables with <a href=./partitioning.md>hidden partitions</a>, make sure you use Spark 3.0.1.</p>
+<blockquote class="book-hint danger">
+Spark 3.0.0 has a correctness bug that affects dynamic <code>INSERT OVERWRITE</code> with hidden partitioning, [SPARK-32168][spark-32168].
+For tables with <a href=/partitioning>hidden partitions</a>, make sure you use Spark 3.0.1.
+</blockquote>
 <h4 id=overwrite-behavior>
 Overwrite behavior
 <a class=anchor href=#overwrite-behavior>#</a>
@@ -577,9 +574,10 @@ Writing with DataFrames
 </li>
 </ul>
 <p>The v1 DataFrame <code>write</code> API is still supported, but is not recommended.</p>
-<p>!!! Warning
+<blockquote class="book-hint danger">
 When writing with the v1 DataFrame API in Spark 3, use <code>saveAsTable</code> or <code>insertInto</code> to load tables with a catalog.
-Using <code>format("iceberg")</code> loads an isolated table reference that will not automatically refresh tables used by queries.</p>
+Using <code>format("iceberg")</code> loads an isolated table reference that will not automatically refresh tables used by queries.
+</blockquote>
 <h3 id=appending-data>
 Appending data
 <a class=anchor href=#appending-data>#</a>
@@ -614,8 +612,9 @@ Spark 2.4
     <span style=color:#f92672>.</span>format<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;iceberg&#34;</span><span style=color:#f92672>)</span>
     <span style=color:#f92672>.</span>mode<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;overwrite&#34;</span><span style=color:#f92672>)</span>
     <span style=color:#f92672>.</span>save<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;db.table&#34;</span><span style=color:#f92672>)</span>
-</code></pre></div><p>!!! Warning
-<strong>The behavior of overwrite mode changed between Spark 2.4 and Spark 3</strong>.</p>
+</code></pre></div><blockquote class="book-hint danger">
+<strong>The behavior of overwrite mode changed between Spark 2.4 and Spark 3</strong>.
+</blockquote>
 <p>The behavior of DataFrameWriter overwrite mode was undefined in Spark 2.4, but is required to overwrite the entire table in Spark 3. Because of this new requirement, the Iceberg source&rsquo;s behavior changed in Spark 3. In Spark 2.4, the behavior was to dynamically overwrite partitions. To use the Spark 2.4 behavior, add option <code>overwrite-mode=dynamic</code>.</p>
 <h3 id=creating-tables>
 Creating tables
@@ -635,12 +634,14 @@ Writing to partitioned tables
 </h2>
 <p>Iceberg requires the data to be sorted according to the partition spec per task (Spark partition) in prior to write
 against partitioned table. This applies both Writing with SQL and Writing with DataFrames.</p>
-<p>!!! Note
+<blockquote class="book-hint info">
 Explicit sort is necessary because Spark doesn&rsquo;t allow Iceberg to request a sort before writing as of Spark 3.0.
 <a href=https://issues.apache.org/jira/browse/SPARK-23889>SPARK-23889</a> is filed to enable Iceberg to require specific
-distribution & sort order to Spark.</p>
-<p>!!! Note
-Both global sort (<code>orderBy</code>/<code>sort</code>) and local sort (<code>sortWithinPartitions</code>) work for the requirement.</p>
+distribution & sort order to Spark.
+</blockquote>
+<blockquote class="book-hint info">
+Both global sort (<code>orderBy</code>/<code>sort</code>) and local sort (<code>sortWithinPartitions</code>) work for the requirement.
+</blockquote>
 <p>Let&rsquo;s go through writing the data against below sample table:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> prod.db.sample (
     id bigint,
@@ -674,10 +675,11 @@ PARTITIONED <span style=color:#66d9ef>BY</span> (bucket(<span style=color:#ae81f
 <span style=color:#66d9ef>import</span> org.apache.spark.sql.types.DataTypes
 
 <span style=color:#a6e22e>IcebergSpark</span><span style=color:#f92672>.</span>registerBucketUDF<span style=color:#f92672>(</span>spark<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;iceberg_bucket16&#34;</span><span style=color:#f92672>,</span> <span style=color:#a6e22e>DataTypes</span><span style=color:#f92672>.</span><span style=color:#a6e22e>LongType</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>16</span><span style=color:#f92672>)</span>
-</code></pre></div><p>!!! Note
+</code></pre></div><blockquote class="book-hint info">
 Explicit registration of the function is necessary because Spark doesn&rsquo;t allow Iceberg to provide functions.
 <a href=https://issues.apache.org/jira/browse/SPARK-27658>SPARK-27658</a> is filed to enable Iceberg to provide functions
-which can be used in query.</p>
+which can be used in query.
+</blockquote>
 <p>Here we just registered the bucket function as <code>iceberg_bucket16</code>, which can be used in sort clause.</p>
 <p>If you&rsquo;re inserting data with SQL statement, you can use the function like below:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>INSERT</span> <span style=color:#66d9ef>INTO</span> prod.db.sample
@@ -794,11 +796,13 @@ Spark type to Iceberg type
 </tr>
 </tbody>
 </table>
-<p>!!! Note
-The table is based on representing conversion during creating table. In fact, broader supports are applied on write. Here&rsquo;re some points on write:</p>
-<pre><code>* Iceberg numeric types (`integer`, `long`, `float`, `double`, `decimal`) support promotion during writes. e.g. You can write Spark types `short`, `byte`, `integer`, `long` to Iceberg type `long`.
-* You can write to Iceberg `fixed` type using Spark `binary` type. Note that assertion on the length will be performed.
-</code></pre>
+<blockquote class="book-hint info">
+<p>The table is based on representing conversion during creating table. In fact, broader supports are applied on write. Here&rsquo;re some points on write:</p>
+<ul>
+<li>Iceberg numeric types (<code>integer</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>decimal</code>) support promotion during writes. e.g. You can write Spark types <code>short</code>, <code>byte</code>, <code>integer</code>, <code>long</code> to Iceberg type <code>long</code>.</li>
+<li>You can write to Iceberg <code>fixed</code> type using Spark <code>binary</code> type. Note that assertion on the length will be performed.</li>
+</ul>
+</blockquote>
 <h3 id=iceberg-type-to-spark-type>
 Iceberg type to Spark type
 <a class=anchor href=#iceberg-type-to-spark-type>#</a>
