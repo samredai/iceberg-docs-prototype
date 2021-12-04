@@ -1,0 +1,512 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Iceberg Blogs #  Here is a list of company blogs that talk about Iceberg. The blogs are ordered from most recent to oldest.
+Using Debezium to Create a Data Lake with Apache Iceberg #  Date: October 20th, 2021, Company: Memiiso Community Author: Ismail Simsek
+How to Analyze CDC Data in Iceberg Data Lake Using Flink #  Date: June 15, 2021, Company: Alibaba Cloud Community
+Author: Li Jinsong, Hu Zheng, Yang Weihai, Peidan Li">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Iceberg Blogs #  Here is a list of company blogs that talk about Iceberg. The blogs are ordered from most recent to oldest.
+Using Debezium to Create a Data Lake with Apache Iceberg #  Date: October 20th, 2021, Company: Memiiso Community Author: Ismail Simsek
+How to Analyze CDC Data in Iceberg Data Lake Using Flink #  Date: June 15, 2021, Company: Alibaba Cloud Community
+Author: Li Jinsong, Hu Zheng, Yang Weihai, Peidan Li">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://samredai.github.io/iceberg-docs-prototype/next/blogs/"><meta property="article:section" content="docs">
+<title>Blogs | Apache Iceberg</title>
+<link rel=manifest href=/iceberg-docs-prototype/next/manifest.json>
+<link rel=icon href=/iceberg-docs-prototype/next/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/iceberg-docs-prototype/next/book.min.a0d6a3836a25edf3324f09f7e93515c58ff9c3a34dd1ca31394f49166b2c75c9.css integrity="sha256-oNajg2ol7fMyTwn36TUVxY/5w6NN0coxOU9JFmssdck=" crossorigin=anonymous>
+<script defer src=/iceberg-docs-prototype/next/flexsearch.min.js></script>
+<script defer src=/iceberg-docs-prototype/next/en.search.min.7d56751bc83a78e36db05eaa205d7e242b504e88284c27c8b4c77e0e6c73f0e0.js integrity="sha256-fVZ1G8g6eONtsF6qIF1+JCtQTogoTCfItMd+Dmxz8OA=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/iceberg-docs-prototype/next/><img src=/iceberg-docs-prototype/next/img/iceberg-logo-icon.png alt=Logo><span>Apache Iceberg</span>
+</a>
+<a href=../releases>
+<img id=version-shield src=https://img.shields.io/badge/version-next-blue alt>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+<a href=https://github.com/apache/iceberg target=_blank>
+<img src=https://samredai.github.io/iceberg-docs-prototype/next/img/GitHub-Mark.png class=top-external-icon>
+</a>
+<a href=https://join.slack.com/t/apache-iceberg/shared_invite/zt-tlv0zjz6-jGJEkHfb1~heMCJA3Uycrg target=_blank>
+<img src=https://samredai.github.io/iceberg-docs-prototype/next/img/Slack_Mark_Web.png class=top-external-icon>
+</a>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>
+<i class="fa fa-table fa-fw"></i>
+Tables</span>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/configuration/>
+Configuration</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/evolution/>
+Evolution</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/maintenance/>
+Maintenance</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/partitioning/>
+Partitioning</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/performance/>
+Performance</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/reliability/>
+Reliability</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/schemas/>
+Schemas</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/getting-started/>
+<i class="fa fa-star-o fa-fw"></i>
+Spark</a>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-configuration/>
+Configuration</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-ddl/>
+DDL</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-procedures/>
+Procedures</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-queries/>
+Queries</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-structured-streaming/>
+Structured Streaming</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spark-writes/>
+Writes</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/flink/>
+<img src=../img/flink-logo.png class="navigation-icon fa-fw">Flink</a>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/flink-connector/>
+Flink Connector</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/hive/>
+<img src=../img/hive-logo.png class="navigation-icon fa-fw">Hive</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://trino.io/docs/current/connector/iceberg.html target=_blank>
+<img src=../img/trino-logo.png class="navigation-icon fa-fw">
+Trino
+</a>
+</li>
+<li class=book-section-flat>
+<a href=https://prestodb.io/docs/current/connector/iceberg.html target=_blank>
+<img src=../img/prestodb-logo.png class="navigation-icon fa-fw">
+PrestoDB
+</a>
+</li>
+<li class=book-section-flat>
+<span>
+<i class="fa fa-handshake-o fa-fw"></i>
+Integrations</span>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/aws/>
+AWS</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/jdbc/>
+JDBC</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/nessie/>
+Nessie</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>
+<i class="fa fa-connectdevelop fa-fw"></i>
+API</span>
+<ul>
+<li class=navigation-icon-pad>
+<input type=checkbox id=section-3752dbeb9567711c46fb17da5ba1dc59 class=toggle>
+<label for=section-3752dbeb9567711c46fb17da5ba1dc59 class="flex justify-between">
+<a role=button>
+Java</a>
+</label>
+<ul>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/java-api-quickstart/>
+Quickstart</a>
+</li>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/api/>
+API</a>
+</li>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/custom-catalog/>
+Custom Catalog</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=/javadoc target=_blank>
+JavaDoc
+</a>
+</li>
+</ul>
+</li>
+<li class=navigation-icon-pad>
+<input type=checkbox id=section-abdba265780fd6e49b6e57db73f8e23b class=toggle>
+<label for=section-abdba265780fd6e49b6e57db73f8e23b class="flex justify-between">
+<a role=button>
+Python</a>
+</label>
+<ul>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/python-quickstart/>
+Quickstart</a>
+</li>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/python-api-intro/>
+API</a>
+</li>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/python-feature-support/>
+Feature Support</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="book-section-flat navigation-icon-pad">
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/community/>
+Community</a>
+<ul>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/blogs/ class=active>
+Blogs</a>
+</li>
+<li>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/talks/>
+Talks</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>
+<i class="fa fa-object-ungroup fa-fw"></i>
+Format</span>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/spec/>
+Spec</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/terms/>
+Terms</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>
+<i class="fa fa-wrench fa-fw"></i>
+Project</span>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/how-to-release/>
+How To Release</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/releases/>
+Releases</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/roadmap/>
+Roadmap</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/security/>
+Security</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/trademarks/>
+Trademarks</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://samredai.github.io/iceberg-docs-prototype/next/releases/>
+<i class="fa fa-code-fork fa-fw"></i>
+Releases</a>
+<ul>
+<li class=navigation-icon-pad>
+<a href=../../next/docs target=_blank>
+next
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=../../0.12.1/docs target=_blank>
+0.12.1
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=../../0.12.0/docs target=_blank>
+0.12.0
+</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>
+<img src=../img/asf.png class="navigation-icon fa-fw">ASF</span>
+<ul>
+<li class=navigation-icon-pad>
+<a href=https://www.apache.org/licenses/ target=_blank>
+License
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://www.apache.org/security/ target=_blank>
+Security
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://www.apache.org/foundation/thanks.html target=_blank>
+Sponsors
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://www.apache.org/foundation/sponsorship.html target=_blank>
+Donate
+</a>
+</li>
+<li class=navigation-icon-pad>
+<a href=https://www.apache.org/events/current-event.html target=_blank>
+Events
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<link rel=stylesheet href=/iceberg-docs-prototype/next/fontawesome/css/font-awesome.min.css>
+<label for=menu-control>
+<img src=/iceberg-docs-prototype/next/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Blogs</strong>
+<label for=toc-control>
+<img src=/iceberg-docs-prototype/next/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#iceberg-blogs>Iceberg Blogs</a>
+<ul>
+<li><a href=#using-debezium-to-create-a-data-lake-with-apache-iceberghttpsdebeziumioblog20211020using-debezium-create-data-lake-with-apache-iceberg><a href=https://debezium.io/blog/2021/10/20/using-debezium-create-data-lake-with-apache-iceberg/>Using Debezium to Create a Data Lake with Apache Iceberg</a></a></li>
+<li><a href=#how-to-analyze-cdc-data-in-iceberg-data-lake-using-flinkhttpswwwalibabacloudcombloghow-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838><a href=https://www.alibabacloud.com/blog/how-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838>How to Analyze CDC Data in Iceberg Data Lake Using Flink</a></a></li>
+<li><a href=#apache-iceberg-an-architectural-look-under-the-covershttpswwwdremiocomapache-iceberg-an-architectural-look-under-the-covers><a href=https://www.dremio.com/apache-iceberg-an-architectural-look-under-the-covers/>Apache Iceberg: An Architectural Look Under the Covers</a></a></li>
+<li><a href=#migrating-to-apache-iceberg-at-adobe-experience-platformhttpsmediumcomadobetechmigrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de><a href=https://medium.com/adobetech/migrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de>Migrating to Apache Iceberg at Adobe Experience Platform</a></a></li>
+<li><a href=#flink--iceberg-how-to-construct-a-whole-scenario-real-time-data-warehousehttpswwwalibabacloudcomblogflink-2b-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824><a href=https://www.alibabacloud.com/blog/flink-%2B-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824>Flink + Iceberg: How to Construct a Whole-scenario Real-time Data Warehouse</a></a></li>
+<li><a href=#trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spechttpsblogstarburstiotrino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec><a href=https://blog.starburst.io/trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec>Trino on Ice III: Iceberg Concurrency Model, Snapshots, and the Iceberg Spec</a></a></li>
+<li><a href=#trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberghttpsblogstarburstiotrino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg><a href=https://blog.starburst.io/trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg>Trino on Ice II: In-Place Table Evolution and Cloud Compatibility with Iceberg</a></a></li>
+<li><a href=#trino-on-ice-i-a-gentle-introduction-to-iceberghttpsblogstarburstiotrino-on-ice-i-a-gentle-introduction-to-iceberg><a href=https://blog.starburst.io/trino-on-ice-i-a-gentle-introduction-to-iceberg>Trino On Ice I: A Gentle Introduction To Iceberg</a></a></li>
+<li><a href=#apache-iceberg-a-different-table-design-for-big-datahttpsthenewstackioapache-iceberg-a-different-table-design-for-big-data><a href=https://thenewstack.io/apache-iceberg-a-different-table-design-for-big-data/>Apache Iceberg: A Different Table Design for Big Data</a></a></li>
+<li><a href=#a-short-introduction-to-apache-iceberghttpsmediumcomexpedia-group-techa-short-introduction-to-apache-iceberg-d34f628b6799><a href=https://medium.com/expedia-group-tech/a-short-introduction-to-apache-iceberg-d34f628b6799>A Short Introduction to Apache Iceberg</a></a></li>
+<li><a href=#taking-query-optimizations-to-the-next-level-with-iceberghttpsmediumcomadobetechtaking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f><a href=https://medium.com/adobetech/taking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f>Taking Query Optimizations to the Next Level with Iceberg</a></a></li>
+<li><a href=#fastingest-low-latency-gobblin-with-apache-iceberg-and-orc-formathttpsengineeringlinkedincomblog2021fastingest-low-latency-gobblin><a href=https://engineering.linkedin.com/blog/2021/fastingest-low-latency-gobblin>FastIngest: Low-latency Gobblin with Apache Iceberg and ORC format</a></a></li>
+<li><a href=#high-throughput-ingestion-with-iceberghttpsmediumcomadobetechhigh-throughput-ingestion-with-iceberg-ccf7877a413f><a href=https://medium.com/adobetech/high-throughput-ingestion-with-iceberg-ccf7877a413f>High Throughput Ingestion with Iceberg</a></a></li>
+<li><a href=#optimizing-data-warehouse-storagehttpsnetflixtechblogcomoptimizing-data-warehouse-storage-7b94a48fdcbe><a href=https://netflixtechblog.com/optimizing-data-warehouse-storage-7b94a48fdcbe>Optimizing data warehouse storage</a></a></li>
+<li><a href=#iceberg-at-adobehttpsmediumcomadobetechiceberg-at-adobe-88cf1950e866><a href=https://medium.com/adobetech/iceberg-at-adobe-88cf1950e866>Iceberg at Adobe</a></a></li>
+<li><a href=#bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-storeshttpsnetflixtechblogcombulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8><a href=https://netflixtechblog.com/bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8>Bulldozer: Batch Data Moving from Data Warehouse to Online Key-Value Stores</a></a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h2 id=iceberg-blogs>
+Iceberg Blogs
+<a class=anchor href=#iceberg-blogs>#</a>
+</h2>
+<p>Here is a list of company blogs that talk about Iceberg. The blogs are ordered from most recent to oldest.</p>
+<h3 id=using-debezium-to-create-a-data-lake-with-apache-iceberghttpsdebeziumioblog20211020using-debezium-create-data-lake-with-apache-iceberg>
+<a href=https://debezium.io/blog/2021/10/20/using-debezium-create-data-lake-with-apache-iceberg/>Using Debezium to Create a Data Lake with Apache Iceberg</a>
+<a class=anchor href=#using-debezium-to-create-a-data-lake-with-apache-iceberghttpsdebeziumioblog20211020using-debezium-create-data-lake-with-apache-iceberg>#</a>
+</h3>
+<p><strong>Date</strong>: October 20th, 2021, <strong>Company</strong>: Memiiso Community
+<strong>Author</strong>: <a href=https://www.linkedin.com/in/ismailsimsek/>Ismail Simsek</a></p>
+<h3 id=how-to-analyze-cdc-data-in-iceberg-data-lake-using-flinkhttpswwwalibabacloudcombloghow-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838>
+<a href=https://www.alibabacloud.com/blog/how-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838>How to Analyze CDC Data in Iceberg Data Lake Using Flink</a>
+<a class=anchor href=#how-to-analyze-cdc-data-in-iceberg-data-lake-using-flinkhttpswwwalibabacloudcombloghow-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838>#</a>
+</h3>
+<p><strong>Date</strong>: June 15, 2021, <strong>Company</strong>: Alibaba Cloud Community</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/%E5%8A%B2%E6%9D%BE-%E6%9D%8E-48b54b101/>Li Jinsong</a>, <a href=https://www.linkedin.com/in/zheng-hu-37017683/>Hu Zheng</a>, <a href=https://www.linkedin.com/in/weihai-yang-697a16224/>Yang Weihai</a>, <a href=https://www.linkedin.com/in/peidian-li-18938820a/>Peidan Li</a></p>
+<h3 id=apache-iceberg-an-architectural-look-under-the-covershttpswwwdremiocomapache-iceberg-an-architectural-look-under-the-covers>
+<a href=https://www.dremio.com/apache-iceberg-an-architectural-look-under-the-covers/>Apache Iceberg: An Architectural Look Under the Covers</a>
+<a class=anchor href=#apache-iceberg-an-architectural-look-under-the-covershttpswwwdremiocomapache-iceberg-an-architectural-look-under-the-covers>#</a>
+</h3>
+<p><strong>Date</strong>: July 6th, 2021, <strong>Company</strong>: Dremio</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/jasonhhughes/>Jason Hughes</a></p>
+<h3 id=migrating-to-apache-iceberg-at-adobe-experience-platformhttpsmediumcomadobetechmigrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de>
+<a href=https://medium.com/adobetech/migrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de>Migrating to Apache Iceberg at Adobe Experience Platform</a>
+<a class=anchor href=#migrating-to-apache-iceberg-at-adobe-experience-platformhttpsmediumcomadobetechmigrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de>#</a>
+</h3>
+<p><strong>Date</strong>: Jun 17th, 2021, <strong>Company</strong>: Adobe</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/rominparekh/>Romin Parekh</a>, <a href=https://www.linkedin.com/in/miao-wang-0406a74/>Miao Wang</a>, <a href=https://www.linkedin.com/in/shonesadler/>Shone Sadler</a></p>
+<h3 id=flink--iceberg-how-to-construct-a-whole-scenario-real-time-data-warehousehttpswwwalibabacloudcomblogflink-2b-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824>
+<a href=https://www.alibabacloud.com/blog/flink-%2B-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824>Flink + Iceberg: How to Construct a Whole-scenario Real-time Data Warehouse</a>
+<a class=anchor href=#flink--iceberg-how-to-construct-a-whole-scenario-real-time-data-warehousehttpswwwalibabacloudcomblogflink-2b-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824>#</a>
+</h3>
+<p><strong>Date</strong>: Jun 8th, 2021, <strong>Company</strong>: Tencent</p>
+<p><strong>Author</strong> <a href=https://www.linkedin.com/in/shu-su-62944994/>Shu (Simon Su) Su</a></p>
+<h3 id=trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spechttpsblogstarburstiotrino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec>
+<a href=https://blog.starburst.io/trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec>Trino on Ice III: Iceberg Concurrency Model, Snapshots, and the Iceberg Spec</a>
+<a class=anchor href=#trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spechttpsblogstarburstiotrino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec>#</a>
+</h3>
+<p><strong>Date</strong>: May 25th, 2021, <strong>Company</strong>: Starburst</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/bitsondatadev>Brian Olsen</a></p>
+<h3 id=trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberghttpsblogstarburstiotrino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg>
+<a href=https://blog.starburst.io/trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg>Trino on Ice II: In-Place Table Evolution and Cloud Compatibility with Iceberg</a>
+<a class=anchor href=#trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberghttpsblogstarburstiotrino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg>#</a>
+</h3>
+<p><strong>Date</strong>: May 11th, 2021, <strong>Company</strong>: Starburst</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/bitsondatadev>Brian Olsen</a></p>
+<h3 id=trino-on-ice-i-a-gentle-introduction-to-iceberghttpsblogstarburstiotrino-on-ice-i-a-gentle-introduction-to-iceberg>
+<a href=https://blog.starburst.io/trino-on-ice-i-a-gentle-introduction-to-iceberg>Trino On Ice I: A Gentle Introduction To Iceberg</a>
+<a class=anchor href=#trino-on-ice-i-a-gentle-introduction-to-iceberghttpsblogstarburstiotrino-on-ice-i-a-gentle-introduction-to-iceberg>#</a>
+</h3>
+<p><strong>Date</strong>: Apr 27th, 2021, <strong>Company</strong>: Starburst</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/bitsondatadev>Brian Olsen</a></p>
+<h3 id=apache-iceberg-a-different-table-design-for-big-datahttpsthenewstackioapache-iceberg-a-different-table-design-for-big-data>
+<a href=https://thenewstack.io/apache-iceberg-a-different-table-design-for-big-data/>Apache Iceberg: A Different Table Design for Big Data</a>
+<a class=anchor href=#apache-iceberg-a-different-table-design-for-big-datahttpsthenewstackioapache-iceberg-a-different-table-design-for-big-data>#</a>
+</h3>
+<p><strong>Date</strong>: Feb 1st, 2021, <strong>Company</strong>: thenewstack.io</p>
+<p><strong>Author</strong>: <a href=https://thenewstack.io/author/susanhall/>Susan Hall</a></p>
+<h3 id=a-short-introduction-to-apache-iceberghttpsmediumcomexpedia-group-techa-short-introduction-to-apache-iceberg-d34f628b6799>
+<a href=https://medium.com/expedia-group-tech/a-short-introduction-to-apache-iceberg-d34f628b6799>A Short Introduction to Apache Iceberg</a>
+<a class=anchor href=#a-short-introduction-to-apache-iceberghttpsmediumcomexpedia-group-techa-short-introduction-to-apache-iceberg-d34f628b6799>#</a>
+</h3>
+<p><strong>Date</strong>: Jan 26th, 2021, <strong>Company</strong>: Expedia</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/christine-mathiesen-676a98159/>Christine Mathiesen</a></p>
+<h3 id=taking-query-optimizations-to-the-next-level-with-iceberghttpsmediumcomadobetechtaking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f>
+<a href=https://medium.com/adobetech/taking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f>Taking Query Optimizations to the Next Level with Iceberg</a>
+<a class=anchor href=#taking-query-optimizations-to-the-next-level-with-iceberghttpsmediumcomadobetechtaking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f>#</a>
+</h3>
+<p><strong>Date</strong>: Jan 14th, 2021, <strong>Company</strong>: Adobe</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/gautamk/>Gautam Kowshik</a>, <a href=https://www.linkedin.com/in/xabriel/>Xabriel J. Collazo Mojica</a></p>
+<h3 id=fastingest-low-latency-gobblin-with-apache-iceberg-and-orc-formathttpsengineeringlinkedincomblog2021fastingest-low-latency-gobblin>
+<a href=https://engineering.linkedin.com/blog/2021/fastingest-low-latency-gobblin>FastIngest: Low-latency Gobblin with Apache Iceberg and ORC format</a>
+<a class=anchor href=#fastingest-low-latency-gobblin-with-apache-iceberg-and-orc-formathttpsengineeringlinkedincomblog2021fastingest-low-latency-gobblin>#</a>
+</h3>
+<p><strong>Date</strong>: Jan 6th, 2021, <strong>Company</strong>: Linkedin</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/zihan-li-0a8a15149/>Zihan Li</a>, <a href=https://www.linkedin.com/in/suddu/>Sudarshan Vasudevan</a>, <a href=https://www.linkedin.com/in/lei-s-a93138a0/>Lei Sun</a>, <a href=https://www.linkedin.com/in/shirshankadas/>Shirshanka Das</a></p>
+<h3 id=high-throughput-ingestion-with-iceberghttpsmediumcomadobetechhigh-throughput-ingestion-with-iceberg-ccf7877a413f>
+<a href=https://medium.com/adobetech/high-throughput-ingestion-with-iceberg-ccf7877a413f>High Throughput Ingestion with Iceberg</a>
+<a class=anchor href=#high-throughput-ingestion-with-iceberghttpsmediumcomadobetechhigh-throughput-ingestion-with-iceberg-ccf7877a413f>#</a>
+</h3>
+<p><strong>Date</strong>: Dec 22nd, 2020, <strong>Company</strong>: Adobe</p>
+<p><strong>Author</strong>: <a href=http://linkedin.com/in/andreiionescu>Andrei Ionescu</a>, <a href=https://www.linkedin.com/in/shonesadler/>Shone Sadler</a>, <a href=https://www.linkedin.com/in/anil-malkani-52861a/>Anil Malkani</a></p>
+<h3 id=optimizing-data-warehouse-storagehttpsnetflixtechblogcomoptimizing-data-warehouse-storage-7b94a48fdcbe>
+<a href=https://netflixtechblog.com/optimizing-data-warehouse-storage-7b94a48fdcbe>Optimizing data warehouse storage</a>
+<a class=anchor href=#optimizing-data-warehouse-storagehttpsnetflixtechblogcomoptimizing-data-warehouse-storage-7b94a48fdcbe>#</a>
+</h3>
+<p><strong>Date</strong>: Dec 21st, 2020, <strong>Company</strong>: Netflix</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/anupom/>Anupom Syam</a></p>
+<h3 id=iceberg-at-adobehttpsmediumcomadobetechiceberg-at-adobe-88cf1950e866>
+<a href=https://medium.com/adobetech/iceberg-at-adobe-88cf1950e866>Iceberg at Adobe</a>
+<a class=anchor href=#iceberg-at-adobehttpsmediumcomadobetechiceberg-at-adobe-88cf1950e866>#</a>
+</h3>
+<p><strong>Date</strong>: Dec 3rd, 2020, <strong>Company</strong>: Adobe</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/shonesadler/>Shone Sadler</a>, <a href=https://www.linkedin.com/in/rominparekh/>Romin Parekh</a>, <a href=https://www.linkedin.com/in/anil-malkani-52861a/>Anil Malkani</a></p>
+<h3 id=bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-storeshttpsnetflixtechblogcombulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8>
+<a href=https://netflixtechblog.com/bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8>Bulldozer: Batch Data Moving from Data Warehouse to Online Key-Value Stores</a>
+<a class=anchor href=#bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-storeshttpsnetflixtechblogcombulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8>#</a>
+</h3>
+<p><strong>Date</strong>: Oct 27th, 2020, <strong>Company</strong>: Netflix</p>
+<p><strong>Author</strong>: <a href=https://www.linkedin.com/in/tianlong-chen-39189b7a/>Tianlong Chen</a>, <a href=https://www.linkedin.com/in/ipapapa/>Ioannis Papapanagiotou</a></p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#iceberg-blogs>Iceberg Blogs</a>
+<ul>
+<li><a href=#using-debezium-to-create-a-data-lake-with-apache-iceberghttpsdebeziumioblog20211020using-debezium-create-data-lake-with-apache-iceberg><a href=https://debezium.io/blog/2021/10/20/using-debezium-create-data-lake-with-apache-iceberg/>Using Debezium to Create a Data Lake with Apache Iceberg</a></a></li>
+<li><a href=#how-to-analyze-cdc-data-in-iceberg-data-lake-using-flinkhttpswwwalibabacloudcombloghow-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838><a href=https://www.alibabacloud.com/blog/how-to-analyze-cdc-data-in-iceberg-data-lake-using-flink_597838>How to Analyze CDC Data in Iceberg Data Lake Using Flink</a></a></li>
+<li><a href=#apache-iceberg-an-architectural-look-under-the-covershttpswwwdremiocomapache-iceberg-an-architectural-look-under-the-covers><a href=https://www.dremio.com/apache-iceberg-an-architectural-look-under-the-covers/>Apache Iceberg: An Architectural Look Under the Covers</a></a></li>
+<li><a href=#migrating-to-apache-iceberg-at-adobe-experience-platformhttpsmediumcomadobetechmigrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de><a href=https://medium.com/adobetech/migrating-to-apache-iceberg-at-adobe-experience-platform-40fa80f8b8de>Migrating to Apache Iceberg at Adobe Experience Platform</a></a></li>
+<li><a href=#flink--iceberg-how-to-construct-a-whole-scenario-real-time-data-warehousehttpswwwalibabacloudcomblogflink-2b-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824><a href=https://www.alibabacloud.com/blog/flink-%2B-iceberg-how-to-construct-a-whole-scenario-real-time-data-warehouse_597824>Flink + Iceberg: How to Construct a Whole-scenario Real-time Data Warehouse</a></a></li>
+<li><a href=#trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spechttpsblogstarburstiotrino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec><a href=https://blog.starburst.io/trino-on-ice-iii-iceberg-concurrency-model-snapshots-and-the-iceberg-spec>Trino on Ice III: Iceberg Concurrency Model, Snapshots, and the Iceberg Spec</a></a></li>
+<li><a href=#trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberghttpsblogstarburstiotrino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg><a href=https://blog.starburst.io/trino-on-ice-ii-in-place-table-evolution-and-cloud-compatibility-with-iceberg>Trino on Ice II: In-Place Table Evolution and Cloud Compatibility with Iceberg</a></a></li>
+<li><a href=#trino-on-ice-i-a-gentle-introduction-to-iceberghttpsblogstarburstiotrino-on-ice-i-a-gentle-introduction-to-iceberg><a href=https://blog.starburst.io/trino-on-ice-i-a-gentle-introduction-to-iceberg>Trino On Ice I: A Gentle Introduction To Iceberg</a></a></li>
+<li><a href=#apache-iceberg-a-different-table-design-for-big-datahttpsthenewstackioapache-iceberg-a-different-table-design-for-big-data><a href=https://thenewstack.io/apache-iceberg-a-different-table-design-for-big-data/>Apache Iceberg: A Different Table Design for Big Data</a></a></li>
+<li><a href=#a-short-introduction-to-apache-iceberghttpsmediumcomexpedia-group-techa-short-introduction-to-apache-iceberg-d34f628b6799><a href=https://medium.com/expedia-group-tech/a-short-introduction-to-apache-iceberg-d34f628b6799>A Short Introduction to Apache Iceberg</a></a></li>
+<li><a href=#taking-query-optimizations-to-the-next-level-with-iceberghttpsmediumcomadobetechtaking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f><a href=https://medium.com/adobetech/taking-query-optimizations-to-the-next-level-with-iceberg-6c968b83cd6f>Taking Query Optimizations to the Next Level with Iceberg</a></a></li>
+<li><a href=#fastingest-low-latency-gobblin-with-apache-iceberg-and-orc-formathttpsengineeringlinkedincomblog2021fastingest-low-latency-gobblin><a href=https://engineering.linkedin.com/blog/2021/fastingest-low-latency-gobblin>FastIngest: Low-latency Gobblin with Apache Iceberg and ORC format</a></a></li>
+<li><a href=#high-throughput-ingestion-with-iceberghttpsmediumcomadobetechhigh-throughput-ingestion-with-iceberg-ccf7877a413f><a href=https://medium.com/adobetech/high-throughput-ingestion-with-iceberg-ccf7877a413f>High Throughput Ingestion with Iceberg</a></a></li>
+<li><a href=#optimizing-data-warehouse-storagehttpsnetflixtechblogcomoptimizing-data-warehouse-storage-7b94a48fdcbe><a href=https://netflixtechblog.com/optimizing-data-warehouse-storage-7b94a48fdcbe>Optimizing data warehouse storage</a></a></li>
+<li><a href=#iceberg-at-adobehttpsmediumcomadobetechiceberg-at-adobe-88cf1950e866><a href=https://medium.com/adobetech/iceberg-at-adobe-88cf1950e866>Iceberg at Adobe</a></a></li>
+<li><a href=#bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-storeshttpsnetflixtechblogcombulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8><a href=https://netflixtechblog.com/bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8>Bulldozer: Batch Data Moving from Data Warehouse to Online Key-Value Stores</a></a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
