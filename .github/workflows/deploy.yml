@@ -40,6 +40,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          publish_branch: asf-site
           destination_dir: ${{ steps.vars.outputs.branch_name }}
 
       - name: Deploy redirect 🚀
@@ -47,4 +48,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./redirect
+          publish_branch: asf-site
           keep_files: true
