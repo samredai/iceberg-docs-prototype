@@ -6,7 +6,7 @@ theme= "hugo-book"
 [params]
   BookLogo = "img/iceberg-logo-icon.png"
   description = "The open table format for analytic datasets."
-  versions.iceberg = "0.12.1" # This is populated by the github deploy workflow and is equal to the branch name
+  versions.iceberg = "" # This is populated by the github deploy workflow and is equal to the branch name
   versions.nessie = "0.15.1"
   latestVersions.iceberg = "0.12.1"  # This is used for the version badge on the "latest" site version
 
