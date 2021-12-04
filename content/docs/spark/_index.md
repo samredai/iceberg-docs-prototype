@@ -39,8 +39,9 @@ To use Iceberg in a Spark shell, use the `--packages` option:
 spark-shell --packages org.apache.iceberg:iceberg-spark3-runtime:{{% icebergVersion %}}
 ```
 
-!!! Note
-    If you want to include Iceberg in your Spark installation, add the [`iceberg-spark3-runtime` Jar][spark-runtime-jar] to Spark's `jars` folder.
+{{< hint info >}}
+If you want to include Iceberg in your Spark installation, add the [`iceberg-spark3-runtime` Jar][spark-runtime-jar] to Spark's `jars` folder.
+{{< /hint >}}
 
 [spark-runtime-jar]: https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark3-runtime/{{% icebergVersion %}}/iceberg-spark3-runtime-{{% icebergVersion %}}.jar
 

@@ -145,10 +145,11 @@ incorrect or not performant the branch can be dropped without being merged.
 Please see the [Nessie Documentation](https://projectnessie.org/features/) for further descriptions of 
 Nessie features.
 
-!!! Warning
-    Regular table maintenance in Iceberg is complicated when using nessie. Please consult
-    [Management Services](https://projectnessie.org/features/management/) before performing any 
-    [table maintenance](../maintenance).
+{{< hint danger >}}
+Regular table maintenance in Iceberg is complicated when using nessie. Please consult
+[Management Services](https://projectnessie.org/features/management/) before performing any 
+[table maintenance](../maintenance).
+{{< /hint >}}
 
 ## Example 
 

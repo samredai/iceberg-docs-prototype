@@ -117,8 +117,9 @@ Table table = tables.create(schema, spec, table_location);
 // Table table = tables.load(table_location);
 ```
 
-!!! Warning
-    Hadoop tables shouldn't be used with file systems that do not support atomic rename. Iceberg relies on rename to synchronize concurrent commits for directory tables.
+{{< hint danger >}}
+Hadoop tables shouldn't be used with file systems that do not support atomic rename. Iceberg relies on rename to synchronize concurrent commits for directory tables.
+{{< /hint >}}
 
 ### Tables in Spark
 

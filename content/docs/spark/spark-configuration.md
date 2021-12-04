@@ -44,8 +44,9 @@ spark.sql.catalog.hadoop_prod.type = hadoop
 spark.sql.catalog.hadoop_prod.warehouse = hdfs://nn:8020/warehouse/path
 ```
 
-!!! Note
-    The Hive-based catalog only loads Iceberg tables. To load non-Iceberg tables in the same Hive metastore, use a [session catalog](#replacing-the-session-catalog).
+{{< hint info >}}
+The Hive-based catalog only loads Iceberg tables. To load non-Iceberg tables in the same Hive metastore, use a [session catalog](#replacing-the-session-catalog).
+{{< /hint >}}
 
 ### Catalog configuration
 

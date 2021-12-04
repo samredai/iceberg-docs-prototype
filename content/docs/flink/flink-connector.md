@@ -71,8 +71,9 @@ CREATE TABLE flink_table (
 );
 ```
 
-!!! Note
-    The underlying catalog database (`hive_db` in the above example) will be created automatically if it does not exist when writing records into the Flink table.
+{{< hint info >}}
+The underlying catalog database (`hive_db` in the above example) will be created automatically if it does not exist when writing records into the Flink table.
+{{< /hint >}}
 
 ## Table managed in hadoop catalog
 

@@ -103,10 +103,11 @@ spark.read
     .load("path/to/table")
 ```
 
-!!! Note
-    Spark does not currently support using `option` with `table` in DataFrameReader commands. All options will be silently 
-    ignored. Do not use `table` when attempting to time-travel or use other options. Options will be supported with `table`
-    in [Spark 3.1 - SPARK-32592](https://issues.apache.org/jira/browse/SPARK-32592).
+{{< hint info >}}
+Spark does not currently support using `option` with `table` in DataFrameReader commands. All options will be silently 
+ignored. Do not use `table` when attempting to time-travel or use other options. Options will be supported with `table`
+in [Spark 3.1 - SPARK-32592](https://issues.apache.org/jira/browse/SPARK-32592).
+{{< /hint >}}
 
 Time travel is not yet supported by Spark's SQL syntax.
 
@@ -139,8 +140,9 @@ To inspect a table's history, snapshots, and other metadata, Iceberg supports me
 
 Metadata tables are identified by adding the metadata table name after the original table name. For example, history for `db.table` is read using `db.table.history`.
 
-!!! Note
-    As of Spark 3.0, the format of the table name for inspection (`catalog.database.table.metadata`) doesn't work with Spark's default catalog (`spark_catalog`). If you've replaced the default catalog, you may want to use `DataFrameReader` API to inspect the table. 
+{{< hint info >}}
+As of Spark 3.0, the format of the table name for inspection (`catalog.database.table.metadata`) doesn't work with Spark's default catalog (`spark_catalog`). If you've replaced the default catalog, you may want to use `DataFrameReader` API to inspect the table. 
+{{< /hint >}}
 
 ### History
 
@@ -162,8 +164,9 @@ SELECT * FROM prod.db.table.history
 +-------------------------+---------------------+---------------------+---------------------+
 ```
 
-!!! Note
-    **This shows a commit that was rolled back.** The example has two snapshots with the same parent, and one is *not* an ancestor of the current table state.
+{{< hint info >}}
+**This shows a commit that was rolled back.** The example has two snapshots with the same parent, and one is *not* an ancestor of the current table state.
+{{< /hint >}}
 
 ### Snapshots
 

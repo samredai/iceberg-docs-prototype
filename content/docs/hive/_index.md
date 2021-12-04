@@ -61,8 +61,9 @@ There are two ways to enable Hive support: globally in Hadoop Configuration and 
 To enable Hive support globally for an application, set `iceberg.engine.hive.enabled=true` in its Hadoop configuration. 
 For example, setting this in the `hive-site.xml` loaded by Spark will enable the storage handler for all tables created by Spark.
 
-!!! Warning
-    Starting with Apache Iceberg `0.11.0`, when using Hive with Tez you also have to disable vectorization (`hive.vectorized.execution.enabled=false`).
+{{< hint danger >}}
+Starting with Apache Iceberg `0.11.0`, when using Hive with Tez you also have to disable vectorization (`hive.vectorized.execution.enabled=false`).
+{{< /hint >}}
 
 #### Table property configuration
 
@@ -189,14 +190,16 @@ CREATE TABLE database_a.table_a (
 ) STORED BY 'org.apache.iceberg.mr.hive.HiveIcebergStorageHandler';
 ```
 
-!!! Note
-    to Hive, the table appears to be unpartitioned although the underlying Iceberg table is partitioned.
+{{< hint info >}}
+to Hive, the table appears to be unpartitioned although the underlying Iceberg table is partitioned.
+{{< /hint >}}
 
-!!! Note
-    Due to the limitation of Hive `PARTITIONED BY` syntax, if you use Hive `CREATE TABLE`, 
-    currently you can only partition by columns, which is translated to Iceberg identity partition transform.
-    You cannot partition by other Iceberg partition transforms such as `days(timestamp)`.
-    To create table with all partition transforms, you need to create the table with other engines like Spark or Flink.
+{{< hint info >}}
+Due to the limitation of Hive `PARTITIONED BY` syntax, if you use Hive `CREATE TABLE`, 
+currently you can only partition by columns, which is translated to Iceberg identity partition transform.
+You cannot partition by other Iceberg partition transforms such as `days(timestamp)`.
+To create table with all partition transforms, you need to create the table with other engines like Spark or Flink.
+{{< /hint >}}
 
 #### Custom catalog table
 
@@ -215,12 +218,13 @@ CREATE TABLE database_a.table_a (
 TBLPROPERTIES ('iceberg.catalog'='hadoop_cat');
 ```
 
-!!! Warning
-    If the table to create already exists in the custom catalog, this will create a managed overlay table.
-    This means technically you can omit the `EXTERNAL` keyword when creating an overlay table.
-    However, this is **not recommended** because creating managed overlay tables could pose a risk
-    to the shared data files in case of accidental drop table commands from the Hive side, 
-    which would unintentionally remove all the data in the table.
+{{< hint danger >}}
+If the table to create already exists in the custom catalog, this will create a managed overlay table.
+This means technically you can omit the `EXTERNAL` keyword when creating an overlay table.
+However, this is **not recommended** because creating managed overlay tables could pose a risk
+to the shared data files in case of accidental drop table commands from the Hive side, 
+which would unintentionally remove all the data in the table.
+{{< /hint >}}
 
 ### DROP TABLE
 
@@ -246,9 +250,10 @@ When changing `gc.enabled` on the Iceberg table via `UpdateProperties`, `externa
 When setting `external.table.purge` as a table prop during Hive `CREATE TABLE`, `gc.enabled` is pushed down accordingly to the Iceberg table properties.
 This makes sure that the 2 properties are always consistent at table level between Hive and Iceberg.
 
-!!! Warning
-    Changing `external.table.purge` via Hive `ALTER TABLE SET TBLPROPERTIES` does not update `gc.enabled` on the Iceberg table. 
-    This is a limitation on Hive 3.1.2 because the `HiveMetaHook` doesn't have all the hooks for alter tables yet.
+{{< hint danger >}}
+Changing `external.table.purge` via Hive `ALTER TABLE SET TBLPROPERTIES` does not update `gc.enabled` on the Iceberg table. 
+This is a limitation on Hive 3.1.2 because the `HiveMetaHook` doesn't have all the hooks for alter tables yet.
+{{< /hint >}}
 
 ## Querying with SQL
 

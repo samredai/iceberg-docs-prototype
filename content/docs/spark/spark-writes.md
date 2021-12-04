@@ -105,9 +105,10 @@ Only one record in the source data can update any given row of the target table,
 
 The partitions that will be replaced by `INSERT OVERWRITE` depends on Spark's partition overwrite mode and the partitioning of a table. `MERGE INTO` can rewrite only affected data files and has more easily understood behavior, so it is recommended instead of `INSERT OVERWRITE`.
 
-!!! Warning
-    Spark 3.0.0 has a correctness bug that affects dynamic `INSERT OVERWRITE` with hidden partitioning, [SPARK-32168][spark-32168].
-    For tables with [hidden partitions](./partitioning.md), make sure you use Spark 3.0.1.
+{{< hint danger >}}
+Spark 3.0.0 has a correctness bug that affects dynamic `INSERT OVERWRITE` with hidden partitioning, [SPARK-32168][spark-32168].
+For tables with [hidden partitions](/partitioning), make sure you use Spark 3.0.1.
+{{< /hint >}}
 
 [spark-32168]: https://issues.apache.org/jira/browse/SPARK-32168
 
@@ -222,9 +223,10 @@ Spark 3 introduced the new `DataFrameWriterV2` API for writing to tables using d
 
 The v1 DataFrame `write` API is still supported, but is not recommended.
 
-!!! Warning
-    When writing with the v1 DataFrame API in Spark 3, use `saveAsTable` or `insertInto` to load tables with a catalog.
-    Using `format("iceberg")` loads an isolated table reference that will not automatically refresh tables used by queries.
+{{< hint danger >}}
+When writing with the v1 DataFrame API in Spark 3, use `saveAsTable` or `insertInto` to load tables with a catalog.
+Using `format("iceberg")` loads an isolated table reference that will not automatically refresh tables used by queries.
+{{< /hint >}}
 
 
 ### Appending data
@@ -273,8 +275,9 @@ data.write
     .save("db.table")
 ```
 
-!!! Warning
-    **The behavior of overwrite mode changed between Spark 2.4 and Spark 3**.
+{{< hint danger >}}
+**The behavior of overwrite mode changed between Spark 2.4 and Spark 3**.
+{{< /hint >}}
 
 The behavior of DataFrameWriter overwrite mode was undefined in Spark 2.4, but is required to overwrite the entire table in Spark 3. Because of this new requirement, the Iceberg source's behavior changed in Spark 3. In Spark 2.4, the behavior was to dynamically overwrite partitions. To use the Spark 2.4 behavior, add option `overwrite-mode=dynamic`.
 
@@ -301,13 +304,15 @@ data.writeTo("prod.db.table")
 Iceberg requires the data to be sorted according to the partition spec per task (Spark partition) in prior to write
 against partitioned table. This applies both Writing with SQL and Writing with DataFrames.
 
-!!! Note
-    Explicit sort is necessary because Spark doesn't allow Iceberg to request a sort before writing as of Spark 3.0.
-    [SPARK-23889](https://issues.apache.org/jira/browse/SPARK-23889) is filed to enable Iceberg to require specific
-    distribution & sort order to Spark.
+{{< hint info >}}
+Explicit sort is necessary because Spark doesn't allow Iceberg to request a sort before writing as of Spark 3.0.
+[SPARK-23889](https://issues.apache.org/jira/browse/SPARK-23889) is filed to enable Iceberg to require specific
+distribution & sort order to Spark.
+{{< /hint >}}
 
-!!! Note
-    Both global sort (`orderBy`/`sort`) and local sort (`sortWithinPartitions`) work for the requirement.
+{{< hint info >}}
+Both global sort (`orderBy`/`sort`) and local sort (`sortWithinPartitions`) work for the requirement.
+{{< /hint >}}
 
 Let's go through writing the data against below sample table:
 
@@ -365,10 +370,11 @@ import org.apache.spark.sql.types.DataTypes
 IcebergSpark.registerBucketUDF(spark, "iceberg_bucket16", DataTypes.LongType, 16)
 ```
 
-!!! Note
-    Explicit registration of the function is necessary because Spark doesn't allow Iceberg to provide functions.
-    [SPARK-27658](https://issues.apache.org/jira/browse/SPARK-27658) is filed to enable Iceberg to provide functions
-    which can be used in query.
+{{< hint info >}}
+Explicit registration of the function is necessary because Spark doesn't allow Iceberg to provide functions.
+[SPARK-27658](https://issues.apache.org/jira/browse/SPARK-27658) is filed to enable Iceberg to provide functions
+which can be used in query.
+{{< /hint >}}
 
 Here we just registered the bucket function as `iceberg_bucket16`, which can be used in sort clause.
 
@@ -418,11 +424,12 @@ This type conversion table describes how Spark types are converted to the Iceber
 | array           | list                    |       |
 | map             | map                     |       |
 
-!!! Note
-    The table is based on representing conversion during creating table. In fact, broader supports are applied on write. Here're some points on write:
-    
-    * Iceberg numeric types (`integer`, `long`, `float`, `double`, `decimal`) support promotion during writes. e.g. You can write Spark types `short`, `byte`, `integer`, `long` to Iceberg type `long`.
-    * You can write to Iceberg `fixed` type using Spark `binary` type. Note that assertion on the length will be performed.
+{{< hint info >}}
+The table is based on representing conversion during creating table. In fact, broader supports are applied on write. Here're some points on write:
+
+* Iceberg numeric types (`integer`, `long`, `float`, `double`, `decimal`) support promotion during writes. e.g. You can write Spark types `short`, `byte`, `integer`, `long` to Iceberg type `long`.
+* You can write to Iceberg `fixed` type using Spark `binary` type. Note that assertion on the length will be performed.
+{{< /hint >}}
 
 ### Iceberg type to Spark type
 

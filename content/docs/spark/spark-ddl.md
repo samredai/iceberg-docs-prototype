@@ -27,8 +27,9 @@ To use Iceberg in Spark, first configure [Spark catalogs](./spark-configuration.
 
 Iceberg uses Apache Spark's DataSourceV2 API for data source and catalog implementations. Spark DSv2 is an evolving API with different levels of support in Spark versions. Spark 2.4 does not support SQL DDL.
 
-!!! Note
-    Spark 2.4 can't create Iceberg tables with DDL, instead use Spark 3.x or the [Iceberg API](./java-api-quickstart.md).
+{{< hint info >}}
+Spark 2.4 can't create Iceberg tables with DDL, instead use Spark 3.x or the [Iceberg API](./java-api-quickstart.md).
+{{< /hint >}}
 
 ## `CREATE TABLE`
 
@@ -249,8 +250,9 @@ Nullability can be changed using `SET NOT NULL` and `DROP NOT NULL`:
 ALTER TABLE prod.db.sample ALTER COLUMN id DROP NOT NULL
 ```
 
-!!! Note
-    `ALTER COLUMN` is not used to update `struct` types. Use `ADD COLUMN` and `DROP COLUMN` to add or remove struct fields.
+{{< hint info >}}
+`ALTER COLUMN` is not used to update `struct` types. Use `ADD COLUMN` and `DROP COLUMN` to add or remove struct fields.
+{{< /hint >}}
 
 
 ### `ALTER TABLE ... DROP COLUMN`
@@ -288,13 +290,14 @@ Adding a partition field is a metadata operation and does not change any of the 
 
 Dynamic partition overwrite behavior will change when the table's partitioning changes because dynamic overwrite replaces partitions implicitly. To overwrite explicitly, use the new `DataFrameWriterV2` API.
 
-!!! Note
-    To migrate from daily to hourly partitioning with transforms, it is not necessary to drop the daily partition field. Keeping the field ensures existing metadata table queries continue to work.
+{{< hint note >}}
+To migrate from daily to hourly partitioning with transforms, it is not necessary to drop the daily partition field. Keeping the field ensures existing metadata table queries continue to work.
+{{< /hint >}}
 
-!!! Warning
-    **Dynamic partition overwrite behavior will change** when partitioning changes
-    For example, if you partition by days and move to partitioning by hours, overwrites will overwrite hourly partitions but not days anymore.
-
+{{< hint danger >}}
+**Dynamic partition overwrite behavior will change** when partitioning changes
+For example, if you partition by days and move to partitioning by hours, overwrites will overwrite hourly partitions but not days anymore.
+{{< /hint >}}
 
 ### `ALTER TABLE ... DROP PARTITION FIELD`
 
@@ -312,13 +315,14 @@ Note that although the partition is removed, the column will still exist in the 
 
 Dropping a partition field is a metadata operation and does not change any of the existing table data. New data will be written with the new partitioning, but existing data will remain in the old partition layout.
 
-!!! Warning
-    **Dynamic partition overwrite behavior will change** when partitioning changes
-    For example, if you partition by days and move to partitioning by hours, overwrites will overwrite hourly partitions but not days anymore.
+{{< hint danger >}}
+**Dynamic partition overwrite behavior will change** when partitioning changes
+For example, if you partition by days and move to partitioning by hours, overwrites will overwrite hourly partitions but not days anymore.
+{{< /hint >}}
 
-!!! Warning
-    Be careful when dropping a partition field because it will change the schema of metadata tables, like `files`, and may cause metadata queries to fail or produce different results.
-
+{{< hint danger >}}
+Be careful when dropping a partition field because it will change the schema of metadata tables, like `files`, and may cause metadata queries to fail or produce different results.
+{{< /hint >}}
 
 ### `ALTER TABLE ... WRITE ORDERED BY`
 
@@ -334,6 +338,6 @@ ALTER TABLE prod.db.sample WRITE ORDERED BY category ASC, id DESC
 ALTER TABLE prod.db.sample WRITE ORDERED BY category ASC NULLS LAST, id DESC NULLS FIRST
 ```
 
-!!! Note
-    Table write order does not guarantee data order for queries. It only affects how data is written to the table.
-
+{{< hint info >}}
+Table write order does not guarantee data order for queries. It only affects how data is written to the table.
+{{< /hint >}}
