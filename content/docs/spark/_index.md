@@ -25,7 +25,7 @@ aliases:
 
 # Getting Started
 
-The latest version of Iceberg is [{{ versions.iceberg }}](./releases.md).
+The latest version of Iceberg is [{{% icebergVersion %}}](./releases.md).
 
 Spark is currently the most feature-rich compute engine for Iceberg operations. 
 We recommend you to get started with Spark to understand Iceberg concepts and features with examples.
@@ -36,13 +36,13 @@ You can also view documentations of using Iceberg with other compute engine unde
 To use Iceberg in a Spark shell, use the `--packages` option:
 
 ```sh
-spark-shell --packages org.apache.iceberg:iceberg-spark3-runtime:{{ versions.iceberg }}
+spark-shell --packages org.apache.iceberg:iceberg-spark3-runtime:{{% icebergVersion %}}
 ```
 
 !!! Note
     If you want to include Iceberg in your Spark installation, add the [`iceberg-spark3-runtime` Jar][spark-runtime-jar] to Spark's `jars` folder.
 
-[spark-runtime-jar]: https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark3-runtime/{{ versions.iceberg }}/iceberg-spark3-runtime-{{ versions.iceberg }}.jar
+[spark-runtime-jar]: https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark3-runtime/{{% icebergVersion %}}/iceberg-spark3-runtime-{{% icebergVersion %}}.jar
 
 ### Adding catalogs
 
@@ -51,7 +51,7 @@ Iceberg comes with [catalogs](./spark-configuration.md#catalogs) that enable SQL
 This command creates a path-based catalog named `local` for tables under `$PWD/warehouse` and adds support for Iceberg tables to Spark's built-in catalog:
 
 ```sh
-spark-sql --packages org.apache.iceberg:iceberg-spark3-runtime:{{ versions.iceberg }}\
+spark-sql --packages org.apache.iceberg:iceberg-spark3-runtime:{{% icebergVersion %}}\
     --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
     --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
     --conf spark.sql.catalog.spark_catalog.type=hive \

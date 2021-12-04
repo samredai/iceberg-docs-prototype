@@ -21,13 +21,13 @@ url: releases
 
 ## Downloads
 
-The latest version of Iceberg is [{{ versions.iceberg }}](https://github.com/apache/iceberg/releases/tag/apache-iceberg-{{ versions.iceberg }}).
+The latest version of Iceberg is [{{% icebergVersion %}}](https://github.com/apache/iceberg/releases/tag/apache-iceberg-{{% icebergVersion %}}).
 
-* [{{ versions.iceberg }} source tar.gz](https://www.apache.org/dyn/closer.cgi/iceberg/apache-iceberg-{{ versions.iceberg }}/apache-iceberg-{{ versions.iceberg }}.tar.gz) -- [signature](https://downloads.apache.org/iceberg/apache-iceberg-{{ versions.iceberg }}/apache-iceberg-{{ versions.iceberg }}.tar.gz.asc) -- [sha512](https://downloads.apache.org/iceberg/apache-iceberg-{{ versions.iceberg }}/apache-iceberg-{{ versions.iceberg }}.tar.gz.sha512)
-* [{{ versions.iceberg }} Spark 3.0 runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark3-runtime/{{ versions.iceberg }}/iceberg-spark3-runtime-{{ versions.iceberg }}.jar)
-* [{{ versions.iceberg }} Spark 2.4 runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark-runtime/{{ versions.iceberg }}/iceberg-spark-runtime-{{ versions.iceberg }}.jar)
-* [{{ versions.iceberg }} Flink runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-flink-runtime/{{ versions.iceberg }}/iceberg-flink-runtime-{{ versions.iceberg }}.jar)
-* [{{ versions.iceberg }} Hive runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-hive-runtime/{{ versions.iceberg }}/iceberg-hive-runtime-{{ versions.iceberg }}.jar)
+* [{{% icebergVersion %}} source tar.gz](https://www.apache.org/dyn/closer.cgi/iceberg/apache-iceberg-{{% icebergVersion %}}/apache-iceberg-{{% icebergVersion %}}.tar.gz) -- [signature](https://downloads.apache.org/iceberg/apache-iceberg-{{% icebergVersion %}}/apache-iceberg-{{% icebergVersion %}}.tar.gz.asc) -- [sha512](https://downloads.apache.org/iceberg/apache-iceberg-{{% icebergVersion %}}/apache-iceberg-{{% icebergVersion %}}.tar.gz.sha512)
+* [{{% icebergVersion %}} Spark 3.0 runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark3-runtime/{{% icebergVersion %}}/iceberg-spark3-runtime-{{% icebergVersion %}}.jar)
+* [{{% icebergVersion %}} Spark 2.4 runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-spark-runtime/{{% icebergVersion %}}/iceberg-spark-runtime-{{% icebergVersion %}}.jar)
+* [{{% icebergVersion %}} Flink runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-flink-runtime/{{% icebergVersion %}}/iceberg-flink-runtime-{{% icebergVersion %}}.jar)
+* [{{% icebergVersion %}} Hive runtime Jar](https://search.maven.org/remotecontent?filepath=org/apache/iceberg/iceberg-hive-runtime/{{% icebergVersion %}}/iceberg-hive-runtime-{{% icebergVersion %}}.jar)
 
 To use Iceberg in Spark, download the runtime JAR and add it to the jars folder of your Spark install. Use iceberg-spark3-runtime for Spark 3, and iceberg-spark-runtime for Spark 2.4.
 
@@ -39,7 +39,7 @@ To add a dependency on Iceberg in Gradle, add the following to `build.gradle`:
 
 ```
 dependencies {
-  compile 'org.apache.iceberg:iceberg-core:{{ versions.iceberg }}'
+  compile 'org.apache.iceberg:iceberg-core:{{% icebergVersion %}}'
 }
 ```
 
@@ -55,7 +55,7 @@ To add a dependency on Iceberg in Maven, add the following to your `pom.xml`:
   <dependency>
     <groupId>org.apache.iceberg</groupId>
     <artifactId>iceberg-core</artifactId>
-    <version>{{ versions.iceberg }}</version>
+    <version>{{% icebergVersion %}}</version>
   </dependency>
   ...
 </dependencies>

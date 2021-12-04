@@ -174,7 +174,7 @@ import os
 from pyflink.datastream import StreamExecutionEnvironment
 
 env = StreamExecutionEnvironment.get_execution_environment()
-iceberg_flink_runtime_jar = os.path.join(os.getcwd(), "iceberg-flink-runtime-{{ versions.iceberg }}.jar")
+iceberg_flink_runtime_jar = os.path.join(os.getcwd(), "iceberg-flink-runtime-{{% icebergVersion %}}.jar")
 
 env.add_jars("file://{}".format(iceberg_flink_runtime_jar))
 ```
@@ -482,7 +482,7 @@ stream.print();
 env.execute("Test Iceberg Batch Read");
 ```
 
-There are other options that we could set by Java API, please see the [FlinkSource#Builder](./javadoc/{{ versions.iceberg }}/org/apache/iceberg/flink/source/FlinkSource.html).
+There are other options that we could set by Java API, please see the [FlinkSource#Builder](./javadoc/{{% icebergVersion %}}/org/apache/iceberg/flink/source/FlinkSource.html).
 
 ## Writing with DataStream
 
@@ -546,7 +546,7 @@ RewriteDataFilesActionResult result = Actions.forTable(table)
         .execute();
 ```
 
-For more doc about options of the rewrite files action, please see [RewriteDataFilesAction](./javadoc/{{ versions.iceberg }}/org/apache/iceberg/flink/actions/RewriteDataFilesAction.html)
+For more doc about options of the rewrite files action, please see [RewriteDataFilesAction](./javadoc/{{% icebergVersion %}}/org/apache/iceberg/flink/actions/RewriteDataFilesAction.html)
 
 ## Future improvement.
 
